@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:intl/intl.dart';
 import 'package:weatherapp_pelatihanumum2023/screens/searchpage.dart';
 import 'package:weatherapp_pelatihanumum2023/services/weathermodel.dart';
 
@@ -11,12 +12,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  String currentDate = DateFormat("MMMM, dd, yyyy").format(DateTime.now());
   WeatherModel weather = WeatherModel();
   late int temps;
   late String city;
   late int wind;
   late int hum;
   late String condition;
+  late SvgPicture icon;
 
   void initState() {
     super.initState();
@@ -31,6 +34,7 @@ class _HomePageState extends State<HomePage> {
         wind = 0;
         hum = 0;
         condition = 'None';
+        icon = SvgPicture.asset('assets/null.svg');
         return;
       }
       var temp = weatherData['main']['temp'];
@@ -41,6 +45,8 @@ class _HomePageState extends State<HomePage> {
       hum = humidity.toInt();
       condition = weatherData['weather'][0]['main'];
       city = weatherData['name'];
+      var conditionId = weatherData['weather'][0]['id'];
+      icon = weather.getWeatherIcon(conditionId);
     });
   }
 
@@ -87,11 +93,11 @@ class _HomePageState extends State<HomePage> {
                   Container(
                     height: 160,
                     width: 160,
-                    child: SvgPicture.asset('assets/$condition.svg'),
+                    child: icon,
                   ),
                   SizedBox(height: 32),
                   WeatherInfo(
-                    date: 'Today, 21 March',
+                    date: currentDate,
                     temp: '$temps',
                     weather: condition,
                     wind: wind,
@@ -178,7 +184,6 @@ class WeatherInfo extends StatelessWidget {
             style: TextStyle(
               color: Colors.white,
               fontSize: 18,
-              fontFamily: 'Overpass',
               fontWeight: FontWeight.w400,
               height: 0,
             ),
@@ -189,7 +194,6 @@ class WeatherInfo extends StatelessWidget {
             style: TextStyle(
               color: Colors.white,
               fontSize: 100,
-              fontFamily: 'Overpass',
               fontWeight: FontWeight.w400,
               height: 0,
             ),
@@ -200,7 +204,6 @@ class WeatherInfo extends StatelessWidget {
             style: TextStyle(
               color: Colors.white,
               fontSize: 24,
-              fontFamily: 'Overpass',
               fontWeight: FontWeight.w600,
               height: 0,
             ),

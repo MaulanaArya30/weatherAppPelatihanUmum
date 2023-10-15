@@ -11,6 +11,12 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage> {
   String? cityName;
 
+  bool isNight() {
+    final now = DateTime.now();
+    final currentTime = TimeOfDay.fromDateTime(now);
+    return currentTime.hour < 6 || currentTime.hour >= 18;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
