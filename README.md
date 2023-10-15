@@ -1,16 +1,5 @@
-# weatherapp_pelatihanumum2023
+# Weather App Pelatihan Umum
 
-A new Flutter project.
+An example of a weather app that uses the OpenWeatherMap API to display the current weather for a given city.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+To use the app you must first make a config.dart file in 'utilities' folder inside 'lib' where you can put the apikey with the constant 'apiKey'.
