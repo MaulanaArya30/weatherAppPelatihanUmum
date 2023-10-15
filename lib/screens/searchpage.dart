@@ -35,7 +35,7 @@ class _SearchPageState extends State<SearchPage> {
               child: Column(
                 children: [
                   Container(
-                    margin: EdgeInsets.symmetric(vertical: 20.0),
+                    margin: EdgeInsets.symmetric(vertical: 28.0),
                     width: double.infinity,
                     height: 60,
                     child: Row(
@@ -76,7 +76,6 @@ class _SearchPageState extends State<SearchPage> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 30),
                   InkWell(
                     onTap: () {
                       Navigator.pop(context, cityName);
@@ -107,43 +106,3 @@ class _SearchPageState extends State<SearchPage> {
     );
   }
 }
-// Align(
-//                     alignment: Alignment.topLeft,
-//                     child: MaterialButton(
-//                       onPressed: () {
-//                         Navigator.pop(context);
-//                       },
-//                       child: Icon(
-//                         Icons.arrow_back_ios,
-//                         size: 50.0,
-//                         color: Colors.white,
-//                       ),
-//                     ),
-//                   ),
-//                   Container(
-//                     padding: EdgeInsets.all(20.0),
-                    // child: 
-//                   ),
-
-
-
-
-
-// Container(
-//                     width: double.infinity,
-//                     height: 80,
-//                     margin: EdgeInsets.symmetric(vertical: 20.0),
-//                     child: Row(
-//                       children: [
-                        
-//                         Container(
-//                           width: double.infinity,
-//                           height: 50,
-//                           decoration: BoxDecoration(
-//                             color: Colors.white.withOpacity(0.5),
-//                             borderRadius: BorderRadius.circular(10.0),
-//                           ),
-//                         ),
-//                       ],
-//                     ),
-//                   ),

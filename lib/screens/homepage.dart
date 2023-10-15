@@ -16,6 +16,7 @@ class _HomePageState extends State<HomePage> {
   late String city;
   late int wind;
   late int hum;
+  late String condition;
 
   void initState() {
     super.initState();
@@ -29,6 +30,7 @@ class _HomePageState extends State<HomePage> {
         city = 'Choose City';
         wind = 0;
         hum = 0;
+        condition = 'None';
         return;
       }
       var temp = weatherData['main']['temp'];
@@ -37,6 +39,7 @@ class _HomePageState extends State<HomePage> {
       wind = windspeed.toInt();
       var humidity = weatherData['main']['humidity'];
       hum = humidity.toInt();
+      condition = weatherData['weather'][0]['main'];
       city = weatherData['name'];
     });
   }
@@ -84,13 +87,13 @@ class _HomePageState extends State<HomePage> {
                   Container(
                     height: 160,
                     width: 160,
-                    child: SvgPicture.asset('assets/cloudy.svg'),
+                    child: SvgPicture.asset('assets/$condition.svg'),
                   ),
                   SizedBox(height: 32),
                   WeatherInfo(
                     date: 'Today, 21 March',
                     temp: '$temps',
-                    weather: 'Cloudy',
+                    weather: condition,
                     wind: wind,
                     hum: hum,
                   ),
